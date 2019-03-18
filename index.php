@@ -38,7 +38,7 @@
                             <label for="user_job">Job</label>
                         </div>
                 </div>
-                <input class="waves-effect waves-light btn" type="submit" name="save" value="Save"/>
+                <input type="submit" name="save" value="Save"/>
             </form>
         </div>
     </div>
@@ -57,8 +57,9 @@
             $name = $_POST['name'];
             $email = $_POST['email'];
             $job = $_POST['job'];
+            $date = date("Y-m-d");
         if(isset($_POST['save'])){
-            $queryInsert = "INSERT INTO [dbp].[User] (name,email,job,date) VALUES ('$name','$email','$job',now())";
+            $queryInsert = "INSERT INTO [dbo].[Users] (name,email,job,date) VALUES ('$name','$email','$job','$date')";
             $result = mysqli_query($conn,$queryInsert);
             if($result){
                 echo  "<h4>1 Record Added !</h4>";
