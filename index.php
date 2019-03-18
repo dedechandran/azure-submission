@@ -80,9 +80,9 @@
         if($result){
             echo "<table>";
             echo "<thead>";
-            echo "<tr>Name</tr>";
-            echo "<tr>Email</tr>";
-            echo "<tr>Job</tr>";
+            echo "<tr><th>Name</th>";
+            echo "<th>Email</th>";
+            echo "<th>Job</th></tr>";
             echo "</thead>";
             echo "<tbody>";
             while($row = sqlsrv_fetch_array($result,SQLSRV_FETCH_ASSOC)){
