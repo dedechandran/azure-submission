@@ -59,8 +59,7 @@
             $job = $_POST['job'];
             $date = date("Y-m-d");
         if(isset($_POST['save'])){
-            $queryInsert = "INSERT INTO [dbo].[Users] (name,email,job,date) VALUES ('$name','$email','$job','$date')";
-            
+            $queryInsert = "INSERT INTO [dbo].[Users] (name,email,job) VALUES ('$name','$email','$job')";
             if($conn->query($queryInsert) === TRUE){
                 echo  "<h4>1 Record Added !</h4>";
             }else{
