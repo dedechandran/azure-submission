@@ -43,12 +43,21 @@
         </div>
     </div>
     <?php
-     $serverName = "skuywebapp.database.windows.net";
-     $userName = "skuyadmin";
-     $password = "Dd12345678";
-     $database = "user-db";
+    //  $serverName = "skuywebapp.database.windows.net";
+    //  $userName = "skuyadmin";
+    //  $password = "Dd12345678";
+    //  $database = "user-db";
 
-     $conn = mysqli_connect($serverName,$userName,$password,$database);
+     $serverName = "skuywebapp.database.windows.net"; // update me
+     $connectionOptions = array(
+         "Database" => "user-db", // update me
+         "Uid" => "skuyadmin", // update me
+         "PWD" => "Dd12345678" // update me
+     );
+     //Establishes the connection
+     $conn = sqlsrv_connect($serverName, $connectionOptions);
+
+    //  $conn = mysqli_connect($serverName,$userName,$password,$database);
      if(!$conn){
         echo "<h4>Gagal Connect !</h4>";
      }
