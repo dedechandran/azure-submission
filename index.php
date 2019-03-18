@@ -63,21 +63,22 @@
      }
      echo "<h4>Connect !</h4>";
     // if($conn){
-        // $queryInsert = "INSERT INTO ";
         
         // if($_SERVER["REQUEST_METHOD"] == "POST"){
-        //     $name = $_POST['name'];
-        //     $email = $_POST['email'];
-        //     $job = $_POST['job'];
-        //     $date = date("Y-m-d");
-        // if(isset($_POST['save'])){
-        //     $queryInsert = "INSERT INTO [dbo].[Users] (name,email,job) VALUES ('$name','$email','$job')";
-        //     if($conn->query($queryInsert) === TRUE){
-        //         echo  "<h4>1 Record Added !</h4>";
-        //     }else{
-        //         echo  "<h4>Gagal Menambahkan Record!</h4>";
-        //     }
-        // }
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $job = $_POST['job'];
+            $date = date("Y-m-d");
+        if(isset($_POST['save'])){
+            $queryInsert = "INSERT INTO [dbo].[Users] (name,email,job) VALUES (?,?,?)";
+            $param = array($name,$email,$job);
+            $result= sqlsrv_query($conn,$queryInsert,$param);
+            if($result){
+                echo  "<h4>1 Record Added !</h4>";
+            }else{
+                echo  "<h4>Gagal Menambahkan Record!</h4>";
+            }
+        }
         // }
     // }
 
