@@ -43,12 +43,18 @@
         </div>
     </div>
     <?php
-     $serverName = "skuywebapp.database.windows.net";
-     $userName = "skuyadmin";
-     $password = "Dd12345678";
-     $database = "db-user";
+    //  $serverName = "skuywebapp.database.windows.net";
+    //  $userName = "skuyadmin";
+    //  $password = "Dd12345678";
+    //  $database = "db-user";
+    $serverName = "skuywebapp.database.windows.net"; // update me
+    $connOptions = array(
+        "Database" => "db-user", // update me
+        "Uid" => "skuyadmin", // update me
+        "PWD" => "Dd12345678" // update me
+    );
 
-     $conn = mysqli_connect($serverName,$userName,$password,$database);
+     $conn = sqlsrv_connect($serverName,$connOptions);
      if($conn){
          echo "<h4>Connect !</h4>";
      }else{
