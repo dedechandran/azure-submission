@@ -39,6 +39,7 @@
                         </div>
                 </div>
                 <input type="submit" name="save" value="Save"/>
+                <input type="submit" name="load-data" value="Load Data"/>
             </form>
         </div>
     </div>
@@ -54,30 +55,46 @@
      //Establishes the connection
      $conn = sqlsrv_connect($serverName, $connectionOptions);
 
-    //  $conn = mysqli_connect($serverName,$userName,$password,$database);
      if(!$conn){
         echo "<h4>Gagal Connect !</h4>";
      }
      echo "<h4>Connect !</h4>";
-    // if($conn){
-        
-        // if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+    if(isset($_POST['save'])){
         $name = $_POST['name'];
         $email = $_POST['email'];
         $job = $_POST['job'];
         $date = date("Y-m-d");
-        if(isset($_POST['save'])){
-            $queryInsert = "INSERT INTO [dbo].[Users] (name,email,job) VALUES (?,?,?)";
-            $param = array($name,$email,$job);
-            $result= sqlsrv_query($conn,$queryInsert,$param);
-            if($result){
-                echo  "<h4>1 Record Added !</h4>";
-            }else{
-                echo  "<h4>Gagal Menambahkan Record!</h4>";
-            }
+
+        $queryInsert = "INSERT INTO [dbo].[Users] (name,email,job) VALUES (?,?,?)";
+        $param = array($name,$email,$job);
+        $result= sqlsrv_query($conn,$queryInsert,$param);
+        if($result){
+            echo  "<h4>1 Record Added !</h4>";
+        }else{
+            echo  "<h4>Gagal Menambahkan Record!</h4>";
         }
-        // }
-    // }
+    }else if(isset($_POST['load-data'])){
+        $querySelect = "SELECT * FROM [dbo].[Users]";
+        $result = sqlsrv_query($conn,$querySelect);
+        if($result){
+            echo "<table>";
+            echo "<thead>";
+            echo "<tr>Name</tr>";
+            echo "<tr>Email</tr>";
+            echo "<tr>Job</tr>";
+            echo "</thead>";
+            echo "<tbody>";
+            while($row = sqlsrv_fetch_array($result,SQLSRV_FETCH_ASSOC)){
+                echo "<tr><td>" . $row['name'] . "</td>";
+                echo "<td>" . $row['email'] . "</td>";
+                echo "<td>" . $row['job'] . "</td></tr>";
+            }
+            echo "</tbody>";
+            echo "</table>";
+        }
+    }
+
 
 
     ?>
