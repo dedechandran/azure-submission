@@ -55,10 +55,10 @@
     // if($conn){
         // $queryInsert = "INSERT INTO ";
         
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
+        // if($_SERVER["REQUEST_METHOD"] == "POST"){
             $user_name = $_POST['name'];
-            echo  $user_name;
-        }
+            echo  "<h2>Selamat Datang " . $user_name . "</h2>";
+        // }
     // }
 
 
