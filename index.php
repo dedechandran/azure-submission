@@ -38,7 +38,10 @@
                             <label for="user_job">Job</label>
                         </div>
                 </div>
-                <input class="waves-effect waves-light btn" type="submit" name="save" value="Save"/>
+                <div class="btn">
+                    <input type="submit" name="save" value="Save"/>
+                </div>
+                
             </form>
         </div>
     </div>
