@@ -60,8 +60,8 @@
             $date = date("Y-m-d");
         if(isset($_POST['save'])){
             $queryInsert = "INSERT INTO [dbo].[Users] (name,email,job,date) VALUES ('$name','$email','$job','$date')";
-            $result = mysqli_query($conn,$queryInsert);
-            if($result){
+            
+            if($conn->query($queryInsert) === TRUE){
                 echo  "<h4>1 Record Added !</h4>";
             }else{
                 echo  "<h4>Gagal Menambahkan Record!</h4>";
