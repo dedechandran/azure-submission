@@ -49,11 +49,10 @@
      $database = "user-db";
 
      $conn = mysqli_connect($serverName,$userName,$password,$database);
-     if($conn){
-         echo "<h4>Connect !</h4>";
-     }else{
+     if(!$conn){
         echo "<h4>Gagal Connect !</h4>";
      }
+     echo "<h4>Connect !</h4>";
     // if($conn){
         // $queryInsert = "INSERT INTO ";
         
