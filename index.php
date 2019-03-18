@@ -38,7 +38,7 @@
                             <label for="user_job">Job</label>
                         </div>
                 </div>
-                <a class="waves-effect waves-light btn" type="submit" name="submit" value="Submit">Save</a>
+                <a class="waves-effect waves-light btn" type="submit" name="save" value="Save">Save</a>
             </form>
         </div>
     </div>
@@ -56,8 +56,10 @@
         // $queryInsert = "INSERT INTO ";
         
         // if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if(isset($_POST['save'])){
             $user_name = $_POST['name'];
             echo  "<h2>Selamat Datang " . $user_name . "</h2>";
+        }
         // }
     // }
 
