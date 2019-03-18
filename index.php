@@ -19,7 +19,7 @@
 
     <div class="container">
         <div class="row">
-            <form class="col s12" action="" method="post">
+            <form class="col s12" action="index.php" method="post">
                 <div class="row">
                     <div class="input-field col s6">
                         <input id="user_name"  type="text" class="validate" name="name">
@@ -54,6 +54,7 @@
 
     // if($conn){
         // $queryInsert = "INSERT INTO ";
+        
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $user_name = $_POST['name'];
             echo  $user_name;
