@@ -62,6 +62,8 @@
             $result = mysqli_query($conn,$queryInsert);
             if($result){
                 echo  "<h4>1 Record Added !</h4>";
+            }else{
+                echo  "<h4>Gagal Menambahkan Record!</h4>";
             }
         }
         // }
