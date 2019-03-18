@@ -38,30 +38,31 @@
                             <label for="user_job">Job</label>
                         </div>
                 </div>
-                <div class="btn">
-                    <input type="submit" name="save" value="Save"/>
-                </div>
-                
+                <input class="waves-effect waves-light btn" type="submit" name="save" value="Save"/>
             </form>
         </div>
     </div>
     <?php
-    // $serverName = "";
-    // $connOptions = array(
-    //     "Database" => "",
-    //     "Uid" => "",
-    //     "PWD" => ""
-    // )
+     $serverName = "skuywebapp.database.windows.net";
+     $userName = "skuyadmin";
+     $password = "Dd12345678";
+     $database = "db-user";
 
-    // $conn = sqlsrv_connect($serverName,$connOptions);
+     $conn = mysqli_connect($serverName,$userName,$password,$database);
 
     // if($conn){
         // $queryInsert = "INSERT INTO ";
         
         // if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $job = $_POST['job'];
         if(isset($_POST['save'])){
-            $user_name = $_POST['name'];
-            echo  "<h2>Selamat Datang " . $user_name . "</h2>";
+            $queryInsert = "INSERT INTO [dbp].[User] (name,email,job,date) VALUES ('$name','$email','$job',now())";
+            $result = mysqli_query($conn,$queryInsert);
+            if($result){
+                echo  "<h4>1 Record Added !</h4>";
+            }
         }
         // }
     // }
