@@ -19,7 +19,7 @@
 
     <div class="container">
         <div class="row">
-            <form class="col s12" action="index.php" method="post">
+            <form class="col s12" action="" method="post">
                 <div class="row">
                     <div class="input-field col s6">
                         <input id="user_name"  type="text" class="validate" name="name">
@@ -43,16 +43,13 @@
         </div>
     </div>
     <?php
-    //  $serverName = "skuywebapp.database.windows.net";
-    //  $userName = "skuyadmin";
-    //  $password = "Dd12345678";
-    //  $database = "user-db";
+ 
 
-     $serverName = "skuywebapp.database.windows.net"; // update me
+     $serverName = "skuywebapp.database.windows.net"; 
      $connectionOptions = array(
-         "Database" => "user-db", // update me
-         "Uid" => "skuyadmin", // update me
-         "PWD" => "Dd12345678" // update me
+         "Database" => "user-db", 
+         "Uid" => "skuyadmin", 
+         "PWD" => "Dd12345678" 
      );
      //Establishes the connection
      $conn = sqlsrv_connect($serverName, $connectionOptions);
@@ -65,10 +62,10 @@
     // if($conn){
         
         // if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $job = $_POST['job'];
-            $date = date("Y-m-d");
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $job = $_POST['job'];
+        $date = date("Y-m-d");
         if(isset($_POST['save'])){
             $queryInsert = "INSERT INTO [dbo].[Users] (name,email,job) VALUES (?,?,?)";
             $param = array($name,$email,$job);
