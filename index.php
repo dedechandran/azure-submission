@@ -55,16 +55,15 @@
      $conn = sqlsrv_connect($serverName, $connectionOptions);
 
      if(!$conn){
-        echo "<h4>Gagal Connect !</h4>";
+        echo "<h5>Gagal Connect !</h5>";
      }
-     echo "<h4>Connect !</h4>";
+     echo "<h5>Connect !</h5>";
 
     if(isset($_POST['save'])){
         $name = $_POST['name'];
         $email = $_POST['email'];
         $job = $_POST['job'];
         $date = date("Y-m-d",time());
-        echo $date;
 
         $queryInsert = "INSERT INTO [dbo].[Users] (name,email,job,date) VALUES (?,?,?,?)";
         $param = array($name,$email,$job,$date);
