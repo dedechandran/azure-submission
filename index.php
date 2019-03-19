@@ -7,7 +7,6 @@
     <link type="text/css" rel="stylesheet" href="css/style.css" media="screen,projection"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>Skuy</title>
 </head>
 <body>
@@ -52,7 +51,7 @@
          "Uid" => "skuyadmin", 
          "PWD" => "Dd12345678" 
      );
-     //Establishes the connection
+  
      $conn = sqlsrv_connect($serverName, $connectionOptions);
 
      if(!$conn){
@@ -66,8 +65,8 @@
         $job = $_POST['job'];
         $date = date("Y-m-d");
 
-        $queryInsert = "INSERT INTO [dbo].[Users] (name,email,job) VALUES (?,?,?)";
-        $param = array($name,$email,$job);
+        $queryInsert = "INSERT INTO [dbo].[Users] (name,email,job,date) VALUES (?,?,?,?)";
+        $param = array($name,$email,$job,$date);
         $result= sqlsrv_query($conn,$queryInsert,$param);
         if($result){
             echo  "<h4>1 Record Added !</h4>";
@@ -82,21 +81,20 @@
             echo "<thead>";
             echo "<tr><th>Name</th>";
             echo "<th>Email</th>";
-            echo "<th>Job</th></tr>";
+            echo "<th>Job</th>";
+            echo "<th>Date</th></tr>";
             echo "</thead>";
             echo "<tbody>";
             while($row = sqlsrv_fetch_array($result,SQLSRV_FETCH_ASSOC)){
                 echo "<tr><td>" . $row['name'] . "</td>";
                 echo "<td>" . $row['email'] . "</td>";
-                echo "<td>" . $row['job'] . "</td></tr>";
+                echo "<td>" . $row['job'] . "</td>";
+                echo "<td>" . $row['date'] . "</td></tr>";
             }
             echo "</tbody>";
             echo "</table>";
         }
     }
-
-
-
     ?>
     <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
