@@ -44,7 +44,6 @@
     </div>
     <?php
  
-
      $serverName = "skuywebapp.database.windows.net"; 
      $connectionOptions = array(
          "Database" => "user-db", 
@@ -69,9 +68,9 @@
         $param = array($name,$email,$job,$date);
         $result= sqlsrv_query($conn,$queryInsert,$param);
         if($result){
-            echo  "<h4>1 Record Added !</h4>";
+            echo  "<h5>1 Record Added !</h5>";
         }else{
-            echo  "<h4>Gagal Menambahkan Record!</h4>";
+            echo  "<h5>Gagal Menambahkan Record!</h5>";
         }
     }else if(isset($_POST['load-data'])){
         $querySelect = "SELECT * FROM [dbo].[Users]";
