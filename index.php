@@ -63,7 +63,7 @@
         $name = $_POST['name'];
         $email = $_POST['email'];
         $job = $_POST['job'];
-        $date = date("Y-m-d");
+        $date = date("Y-m-d",time());
 
         $queryInsert = "INSERT INTO [dbo].[Users] (name,email,job,date) VALUES (?,?,?,?)";
         $param = array($name,$email,$job,$date);
