@@ -59,41 +59,42 @@
      }
      echo "<h4>Connect !</h4>";
 
-    if(isset($_POST['save'])){
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $job = $_POST['job'];
+    // if(isset($_POST['save'])){
+        // $name = $_POST['name'];
+        // $email = $_POST['email'];
+        // $job = $_POST['job'];
         $date = date("Y-m-d",time());
+        echo $date;
 
-        $queryInsert = "INSERT INTO [dbo].[Users] (name,email,job,date) VALUES (?,?,?,?)";
-        $param = array($name,$email,$job,$date);
-        $result= sqlsrv_query($conn,$queryInsert,$param);
-        if($result){
-            echo  "<h4>1 Record Added !</h4>";
-        }else{
-            echo  "<h4>Gagal Menambahkan Record!</h4>";
-        }
-    }else if(isset($_POST['load-data'])){
-        $querySelect = "SELECT * FROM [dbo].[Users]";
-        $result = sqlsrv_query($conn,$querySelect);
-        if($result){
-            echo "<table>";
-            echo "<thead>";
-            echo "<tr><th>Name</th>";
-            echo "<th>Email</th>";
-            echo "<th>Job</th>";
-            echo "<th>Date</th></tr>";
-            echo "</thead>";
-            echo "<tbody>";
-            while($row = sqlsrv_fetch_array($result,SQLSRV_FETCH_ASSOC)){
-                echo "<tr><td>" . $row['name'] . "</td>";
-                echo "<td>" . $row['email'] . "</td>";
-                echo "<td>" . $row['job'] . "</td>";
-                echo "<td>" . $row['date'] . "</td></tr>";
-            }
-            echo "</tbody>";
-            echo "</table>";
-        }
+    //     $queryInsert = "INSERT INTO [dbo].[Users] (name,email,job,date) VALUES (?,?,?,?)";
+    //     $param = array($name,$email,$job,$date);
+    //     $result= sqlsrv_query($conn,$queryInsert,$param);
+    //     if($result){
+    //         echo  "<h4>1 Record Added !</h4>";
+    //     }else{
+    //         echo  "<h4>Gagal Menambahkan Record!</h4>";
+    //     }
+    // }else if(isset($_POST['load-data'])){
+    //     $querySelect = "SELECT * FROM [dbo].[Users]";
+    //     $result = sqlsrv_query($conn,$querySelect);
+    //     if($result){
+    //         echo "<table>";
+    //         echo "<thead>";
+    //         echo "<tr><th>Name</th>";
+    //         echo "<th>Email</th>";
+    //         echo "<th>Job</th>";
+    //         echo "<th>Date</th></tr>";
+    //         echo "</thead>";
+    //         echo "<tbody>";
+    //         while($row = sqlsrv_fetch_array($result,SQLSRV_FETCH_ASSOC)){
+    //             echo "<tr><td>" . $row['name'] . "</td>";
+    //             echo "<td>" . $row['email'] . "</td>";
+    //             echo "<td>" . $row['job'] . "</td>";
+    //             echo "<td>" . $row['date'] . "</td></tr>";
+    //         }
+    //         echo "</tbody>";
+    //         echo "</table>";
+    //     }
     }
     ?>
     <script type="text/javascript" src="js/materialize.min.js"></script>
