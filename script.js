@@ -43,6 +43,7 @@ $("#btn-load").click(function(){
 $("#btn-analyze").click(function(){
     $(".responsive-img").remove();
     $("#img-container").append(status_analyzing);
+    $(".description").remove();
     let subscriptionKey = "44f61fa934d6442895753d2a182a2229";
     let uriBase =
     "https://southeastasia.api.cognitive.microsoft.com/vision/v2.0/analyze";
@@ -73,7 +74,6 @@ $("#btn-analyze").click(function(){
         data: '{"url": ' + '"' + imgUrl + '"}',
     }).done(function(data){
         $("#status-analyzing").remove();
-        $(".description").remove();
         $('#img-container').append($(`<p>Tags : ${data.description.tags}</p>`).addClass("description"))
         $('#img-container').append($(`<p>Captions : ${data.description.captions[0].text}</p>`).addClass("description")) 
     })
