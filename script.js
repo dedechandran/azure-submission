@@ -1,17 +1,17 @@
-function processImage(){
 
-}
-
-
+var status_upload = $("<p>Status : Uploading !</p>").attr("id","status-upload");
+var status_load = $("<p>Status : Loading !</p>").attr("id","status-load");
+var status_analyzing = $("<p>Status : Analyzing !</p>").attr("id","status-analyzing");
 
 $("#btn-upload").click(function(){
     var url = $('#input-image').val();
     if(url != ""){
-        $("#status").text("Status : Uploading !");
+        $("#upload-image").append(status_upload);
         $.post("./upload_blob.php",{imgUrl : url}, function(data,status){
             $('#input-image').val("");
         }).done(function(data){
-            $("#status").text(`Status : ${data} !`);
+            $("#status-upload").remove();
+            alert(data);
         })
     }else{
         alert("Field Perlu diisi");
@@ -21,8 +21,8 @@ $("#btn-upload").click(function(){
 
 $("#btn-load").click(function(){
     $(".blob-data").remove();
+    $("#load-image").append(status_load);
     $.get("./read_blob.php",function(data,status){
-        console.log(data);
         let blobs= data.split("\n");
         for(let i=0;i< blobs.length-1;i++){
             let tableRow = $("<tr></tr>").addClass("blob-data");
@@ -35,11 +35,14 @@ $("#btn-load").click(function(){
             tableRow.append(dataImage);
             $("table").append(tableRow);        
         }
+    }).done(function(data){
+        $("#status-load").remove();
     })
 })
 
 $("#btn-analyze").click(function(){
     $(".responsive-img").remove();
+    $("#img-container").append(status_analyzing);
     let subscriptionKey = "44f61fa934d6442895753d2a182a2229";
     let uriBase =
     "https://southeastasia.api.cognitive.microsoft.com/vision/v2.0/analyze";
@@ -69,7 +72,7 @@ $("#btn-analyze").click(function(){
         // Request body.
         data: '{"url": ' + '"' + imgUrl + '"}',
     }).done(function(data){
-
+        $("#status-analyzing").remove();
         $(".description").remove();
         $('#img-container').append($(`<p>Tags : ${data.description.tags}</p>`).addClass("description"))
         $('#img-container').append($(`<p>Captions : ${data.description.captions[0].text}</p>`).addClass("description")) 
